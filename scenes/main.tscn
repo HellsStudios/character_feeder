@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bdm1bwo0j4bnf"]
+
+[ext_resource type="PackedScene" uid="uid://bwr6mdlsu24tp" path="res://scenes/edible.tscn" id="1_o5qli"]
+
+[node name="Node2D" type="Node2D" unique_id=1080789217]
+
+[node name="Edible" parent="." unique_id=739754446 instance=ExtResource("1_o5qli")]
+position = Vector2(341, -22)
