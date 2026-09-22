@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bdm1bwo0j4bnf"]
 
-[ext_resource type="PackedScene" uid="uid://bwr6mdlsu24tp" path="res://scenes/edible.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://bwr68vk0lhb8r" path="res://predator.tscn" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://ig2gl8s20vf8" path="res://scenes/edible_spawner.tscn" id="3_sugp2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nxlau"]
 size = Vector2(1211, 20)
@@ -11,13 +11,20 @@ size = Vector2(1211, 20)
 [node name="Predator" parent="." unique_id=493401095 instance=ExtResource("2_0wfyh")]
 position = Vector2(579, 438)
 
-[node name="Edible" parent="." unique_id=739754446 instance=ExtResource("1_o5qli")]
-position = Vector2(341, -22)
-
 [node name="Ground" type="StaticBody2D" parent="." unique_id=1041349482]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=57684275]
 position = Vector2(586, 598)
 shape = SubResource("RectangleShape2D_nxlau")
 
-[connection signal="eaten" from="Edible" to="Predator" method="_on_edible_eaten"]
+[node name="Control" type="Control" parent="." unique_id=1966539738]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="EdibleSpawner" parent="." unique_id=2095343811 instance=ExtResource("3_sugp2")]
+offset_left = 16.0
+offset_top = 22.0
+offset_right = 224.0
+offset_bottom = 230.0

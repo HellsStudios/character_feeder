@@ -1,3 +1,20 @@
 [gd_scene format=3 uid="uid://ig2gl8s20vf8"]
 
-[node name="EdibleSpawner" type="Node2D" unique_id=670272026]
+[ext_resource type="Script" uid="uid://bcuecjiwtkhqb" path="res://scenes/edible_spawner.gd" id="1_cikm8"]
+[ext_resource type="Texture2D" uid="uid://dorjmaxulhbwy" path="res://assets/rabbit-face-line-art-icon-vector-58758766.jpg" id="2_kkxgs"]
+[ext_resource type="PackedScene" uid="uid://bwr6mdlsu24tp" path="res://scenes/edible.tscn" id="2_nkltu"]
+
+[node name="EdibleSpawner" type="Button" unique_id=2095343811]
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 108.0
+offset_bottom = 108.0
+script = ExtResource("1_cikm8")
+edible_scene = ExtResource("2_nkltu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=636711693]
+position = Vector2(104, 107.99999)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_kkxgs")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
