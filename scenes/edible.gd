@@ -28,9 +28,20 @@ func _physics_process(delta):
 	if dragging:
 		global_position = get_global_mouse_position() + drag_offset
 
+
+
+
 #func _input(event):
 	#if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		#if event.pressed:
 			#print("Mouse just went down!")
 		#elif event.is_released():
 			#print("Mouse just went up!")
+#
+
+func _on_eaten_hurtbox_area_entered(area):
+	print("area ent")
+
+
+func _on_eaten_hurtbox_body_entered(body):
+	print("body ent")
