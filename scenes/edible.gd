@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+signal eaten
+
 var dragging := false
 var drag_offset := Vector2.ZERO
 
@@ -40,8 +42,4 @@ func _physics_process(delta):
 #
 
 func _on_eaten_hurtbox_area_entered(area):
-	print("area ent")
-
-
-func _on_eaten_hurtbox_body_entered(body):
-	print("body ent")
+	emit_signal("eaten")

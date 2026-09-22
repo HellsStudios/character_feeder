@@ -19,3 +19,5 @@ position = Vector2(341, -22)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=57684275]
 position = Vector2(586, 598)
 shape = SubResource("RectangleShape2D_nxlau")
+
+[connection signal="eaten" from="Edible" to="Predator" method="_on_edible_eaten"]
