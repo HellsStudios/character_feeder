@@ -1,8 +1,21 @@
 [gd_scene format=3 uid="uid://bdm1bwo0j4bnf"]
 
 [ext_resource type="PackedScene" uid="uid://bwr6mdlsu24tp" path="res://scenes/edible.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://bwr68vk0lhb8r" path="res://predator.tscn" id="2_0wfyh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxlau"]
+size = Vector2(1211, 20)
 
 [node name="Node2D" type="Node2D" unique_id=1080789217]
 
+[node name="Predator" parent="." unique_id=493401095 instance=ExtResource("2_0wfyh")]
+position = Vector2(579, 438)
+
 [node name="Edible" parent="." unique_id=739754446 instance=ExtResource("1_o5qli")]
 position = Vector2(341, -22)
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=1041349482]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=57684275]
+position = Vector2(586, 598)
+shape = SubResource("RectangleShape2D_nxlau")

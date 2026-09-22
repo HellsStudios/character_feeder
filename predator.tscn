@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bwr68vk0lhb8r"]
+
+[ext_resource type="Texture2D" uid="uid://cjo4hbw8vr56h" path="res://assets/jammet_weight_gain.png" id="1_0lvvg"]
+
+[node name="Predator" type="Node2D" unique_id=493401095]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1909342321]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_0lvvg")
