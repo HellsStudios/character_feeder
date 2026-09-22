@@ -43,3 +43,4 @@ func _physics_process(delta):
 
 func _on_eaten_hurtbox_area_entered(area):
 	emit_signal("eaten")
+	queue_free()
