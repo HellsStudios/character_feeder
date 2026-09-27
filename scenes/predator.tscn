@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bwr68vk0lhb8r"]
 
 [ext_resource type="Texture2D" uid="uid://cjo4hbw8vr56h" path="res://assets/jammet_weight_gain.png" id="1_0lvvg"]
-[ext_resource type="Script" uid="uid://bbiipyu7vbxtt" path="res://predator.gd" id="1_8or0i"]
+[ext_resource type="Script" uid="uid://bbiipyu7vbxtt" path="res://scenes/predator.gd" id="1_8or0i"]
 [ext_resource type="Texture2D" uid="uid://pk3555qmotqo" path="res://assets/jammet_belly.png" id="3_8onla"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nxlau"]
@@ -16,7 +16,9 @@ texture = ExtResource("1_0lvvg")
 
 [node name="Belly" type="Node2D" parent="." unique_id=1700222651]
 
-[node name="Sprite2D" type="Sprite2D" parent="Belly" unique_id=459868612]
+[node name="Node2D" type="Node2D" parent="Belly" unique_id=15910279]
+
+[node name="Sprite2D" type="Sprite2D" parent="Belly/Node2D" unique_id=459868612]
 position = Vector2(-72, 22)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_8onla")
