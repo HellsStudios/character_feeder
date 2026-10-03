@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bwr68vk0lhb8r"]
 
 [ext_resource type="Script" uid="uid://bbiipyu7vbxtt" path="res://scenes/predator.gd" id="1_8or0i"]
-[ext_resource type="Texture2D" uid="uid://ced4p4gpbowqv" path="res://assets/pred_sprite.png" id="2_wacsr"]
+[ext_resource type="Texture2D" uid="uid://cc64drvypvlxx" path="res://assets/pred.png" id="2_wacsr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nxlau"]
 radius = 66.27216
@@ -124,6 +124,7 @@ vframes = 2
 [node name="Belly" type="Node2D" parent="." unique_id=1700222651]
 
 [node name="BellySprite" type="Node2D" parent="Belly" unique_id=15910279]
+position = Vector2(-22, 26)
 
 [node name="Sprite2D" type="Sprite2D" parent="Belly/BellySprite" unique_id=459868612]
 texture = ExtResource("2_wacsr")
