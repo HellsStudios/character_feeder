@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://bwr68vk0lhb8r"]
 
-[ext_resource type="Texture2D" uid="uid://cjo4hbw8vr56h" path="res://assets/jammet_weight_gain.png" id="1_0lvvg"]
 [ext_resource type="Script" uid="uid://bbiipyu7vbxtt" path="res://scenes/predator.gd" id="1_8or0i"]
-[ext_resource type="Texture2D" uid="uid://pk3555qmotqo" path="res://assets/jammet_belly.png" id="3_8onla"]
+[ext_resource type="Texture2D" uid="uid://ced4p4gpbowqv" path="res://assets/pred_sprite.png" id="2_wacsr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nxlau"]
-radius = 48.373547
+radius = 66.27216
 
 [sub_resource type="Animation" id="Animation_koidv"]
 length = 0.001
@@ -20,6 +19,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_q77xh"]
@@ -39,29 +50,51 @@ tracks/0/keys = {
 "values": [Vector2(1, 1), Vector2(1.2, 1.2)]
 }
 
+[sub_resource type="Animation" id="Animation_wacsr"]
+resource_name = "mouth_open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_voa5e"]
 _data = {
 &"RESET": SubResource("Animation_koidv"),
-&"belly_enlarge": SubResource("Animation_q77xh")
+&"belly_enlarge": SubResource("Animation_q77xh"),
+&"mouth_open": SubResource("Animation_wacsr")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxlau"]
+size = Vector2(147, 141.5)
 
 [node name="Predator" type="Node2D" unique_id=493401095]
 script = ExtResource("1_8or0i")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1909342321]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_0lvvg")
+texture = ExtResource("2_wacsr")
+hframes = 2
+vframes = 2
 
 [node name="Belly" type="Node2D" parent="." unique_id=1700222651]
 
 [node name="BellySprite" type="Node2D" parent="Belly" unique_id=15910279]
 
 [node name="Sprite2D" type="Sprite2D" parent="Belly/BellySprite" unique_id=459868612]
-position = Vector2(-72, 22)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_8onla")
+texture = ExtResource("2_wacsr")
+hframes = 2
+vframes = 2
+frame = 2
 
 [node name="EatenHitbox" type="Area2D" parent="." unique_id=1367846050]
+position = Vector2(-59, -129)
 collision_layer = 2
 collision_mask = 0
 
@@ -72,3 +105,9 @@ debug_color = Color(0.7176471, 0.42745098, 0.5882353, 0.41960785)
 
 [node name="BellyAnimationPlayer" type="AnimationPlayer" parent="." unique_id=691396620]
 libraries/ = SubResource("AnimationLibrary_voa5e")
+
+[node name="MouthOpenCollision" type="Area2D" parent="." unique_id=1188597438]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouthOpenCollision" unique_id=1255473842]
+position = Vector2(3.5, -301.25)
+shape = SubResource("RectangleShape2D_nxlau")
