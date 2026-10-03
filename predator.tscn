@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://b074h4atpwcv7"]
 
-[ext_resource type="Texture2D" uid="uid://cjo4hbw8vr56h" path="res://assets/jammet_weight_gain.png" id="1_0lvvg"]
-[ext_resource type="Texture2D" uid="uid://pk3555qmotqo" path="res://assets/jammet_belly.png" id="3_8onla"]
+[ext_resource type="Texture2D" uid="uid://ced4p4gpbowqv" path="res://assets/pred_sprite.png" id="1_0lvvg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nxlau"]
 radius = 48.373547
@@ -11,13 +10,18 @@ radius = 48.373547
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1909342321]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_0lvvg")
+hframes = 2
+vframes = 2
 
 [node name="Belly" type="Node2D" parent="." unique_id=1700222651]
 
 [node name="Sprite2D" type="Sprite2D" parent="Belly" unique_id=459868612]
-position = Vector2(-72, 22)
+position = Vector2(0, -2)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_8onla")
+texture = ExtResource("1_0lvvg")
+hframes = 2
+vframes = 2
+frame = 2
 
 [node name="EatenHitbox" type="Area2D" parent="." unique_id=1367846050]
 collision_layer = 2
