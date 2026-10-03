@@ -6,6 +6,60 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_nxlau"]
 radius = 66.27216
 
+[sub_resource type="Animation" id="Animation_wacsr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_w6bwu"]
+resource_name = "idle"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_voa5e"]
+resource_name = "mouth_open"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w6bwu"]
+_data = {
+&"RESET": SubResource("Animation_wacsr"),
+&"idle": SubResource("Animation_w6bwu"),
+&"mouth_open": SubResource("Animation_voa5e")
+}
+
 [sub_resource type="Animation" id="Animation_koidv"]
 length = 0.001
 tracks/0/type = "value"
@@ -50,26 +104,10 @@ tracks/0/keys = {
 "values": [Vector2(1, 1), Vector2(1.2, 1.2)]
 }
 
-[sub_resource type="Animation" id="Animation_wacsr"]
-resource_name = "mouth_open"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.033333335),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_voa5e"]
 _data = {
 &"RESET": SubResource("Animation_koidv"),
-&"belly_enlarge": SubResource("Animation_q77xh"),
-&"mouth_open": SubResource("Animation_wacsr")
+&"belly_enlarge": SubResource("Animation_q77xh")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nxlau"]
@@ -103,11 +141,21 @@ position = Vector2(53, -51)
 shape = SubResource("CircleShape2D_nxlau")
 debug_color = Color(0.7176471, 0.42745098, 0.5882353, 0.41960785)
 
+[node name="BodyAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1136067060]
+libraries/ = SubResource("AnimationLibrary_w6bwu")
+
 [node name="BellyAnimationPlayer" type="AnimationPlayer" parent="." unique_id=691396620]
 libraries/ = SubResource("AnimationLibrary_voa5e")
 
 [node name="MouthOpenCollision" type="Area2D" parent="." unique_id=1188597438]
+position = Vector2(-18, -34)
+priority = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouthOpenCollision" unique_id=1255473842]
 position = Vector2(3.5, -301.25)
 shape = SubResource("RectangleShape2D_nxlau")
+
+[connection signal="area_entered" from="MouthOpenCollision" to="." method="_on_mouth_open_collision_area_entered"]
+[connection signal="area_exited" from="MouthOpenCollision" to="." method="_on_mouth_open_collision_area_exited"]
+[connection signal="body_entered" from="MouthOpenCollision" to="." method="_on_mouth_open_collision_body_entered"]
+[connection signal="body_exited" from="MouthOpenCollision" to="." method="_on_mouth_open_collision_body_exited"]

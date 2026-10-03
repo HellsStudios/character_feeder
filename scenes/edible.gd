@@ -5,6 +5,10 @@ signal eaten
 var dragging := false
 var drag_offset := Vector2.ZERO
 
+func _ready():
+	freeze_mode = RigidBody2D.FREEZE_MODE_KINEMATIC
+
+
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
@@ -44,3 +48,4 @@ func _physics_process(delta):
 func _on_eaten_hurtbox_area_entered(area):
 	emit_signal("eaten")
 	queue_free()
+	#pass
