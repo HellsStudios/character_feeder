@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var belly = $Belly
 @onready var body_animation_player = $BodyAnimationPlayer
+@onready var belly_animation_player = $BellyAnimationPlayer
 
 var belly_increase : float = 0.08
 
@@ -15,6 +16,7 @@ func _on_edible_eaten():
 	
 	
 func increase_belly_size():
+	belly_animation_player.play("belly_enlarge")
 	var current_scale : Vector2 = belly.scale
 	var increased_x = current_scale.x + 0.1
 	var increased_y = current_scale.y + 0.1
