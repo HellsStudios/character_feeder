@@ -1,6 +1,7 @@
 extends Node2D
 
-@onready var belly = $Belly
+@onready var belly = $Visuals/Belly
+@onready var entire_animation_player = $EntireAnimationPlayer
 @onready var body_animation_player = $BodyAnimationPlayer
 @onready var belly_animation_player = $BellyAnimationPlayer
 

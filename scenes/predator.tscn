@@ -6,34 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_nxlau"]
 radius = 66.27216
 
-[sub_resource type="Animation" id="Animation_wacsr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_w6bwu"]
+[sub_resource type="Animation" id="Animation_gymde"]
 resource_name = "idle"
 length = 2.5000000000000004
 loop_mode = 1
@@ -41,7 +14,27 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("../Visuals:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.95), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7ds8v"]
+_data = {
+&"idle": SubResource("Animation_gymde")
+}
+
+[sub_resource type="Animation" id="Animation_wacsr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -50,17 +43,22 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:scale")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.2, 2.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1, 0.95), Vector2(1, 1)]
+
+[sub_resource type="Animation" id="Animation_w6bwu"]
+resource_name = "idle"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_voa5e"]
@@ -69,7 +67,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("Visuals/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -91,7 +89,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Belly/BellySprite:scale")
+tracks/0/path = NodePath("Visuals/Belly/BellySprite:scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -108,7 +106,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Belly/BellySprite:scale")
+tracks/0/path = NodePath("Visuals/Belly/BellySprite:scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -130,18 +128,20 @@ size = Vector2(147, 141.5)
 [node name="Predator" type="Node2D" unique_id=493401095]
 script = ExtResource("1_8or0i")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1909342321]
+[node name="Visuals" type="Node2D" parent="." unique_id=595362937]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals" unique_id=1909342321]
 texture = ExtResource("2_wacsr")
 hframes = 2
 vframes = 2
 
-[node name="Belly" type="Node2D" parent="." unique_id=1700222651]
+[node name="Belly" type="Node2D" parent="Visuals" unique_id=1700222651]
 position = Vector2(12, -33)
 
-[node name="BellySprite" type="Node2D" parent="Belly" unique_id=15910279]
+[node name="BellySprite" type="Node2D" parent="Visuals/Belly" unique_id=15910279]
 position = Vector2(-22, 26)
 
-[node name="Sprite2D" type="Sprite2D" parent="Belly/BellySprite" unique_id=459868612]
+[node name="Sprite2D" type="Sprite2D" parent="Visuals/Belly/BellySprite" unique_id=459868612]
 position = Vector2(-11, 35)
 texture = ExtResource("2_wacsr")
 hframes = 2
@@ -157,6 +157,11 @@ collision_mask = 0
 position = Vector2(53, -51)
 shape = SubResource("CircleShape2D_nxlau")
 debug_color = Color(0.7176471, 0.42745098, 0.5882353, 0.41960785)
+
+[node name="EntireAnimationPlayer" type="AnimationPlayer" parent="." unique_id=47096925]
+root_node = NodePath("../BodyAnimationPlayer")
+libraries/ = SubResource("AnimationLibrary_7ds8v")
+autoplay = &"idle"
 
 [node name="BodyAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1136067060]
 libraries/ = SubResource("AnimationLibrary_w6bwu")
