@@ -89,7 +89,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.5, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1, 1.3), Vector2(1.3, 0.8), Vector2(1, 1)]
+"values": [Vector2(1, 1), Vector2(1, 1.2), Vector2(1.2, 0.9), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_voa5e"]
@@ -110,11 +110,13 @@ hframes = 2
 vframes = 2
 
 [node name="Belly" type="Node2D" parent="." unique_id=1700222651]
+position = Vector2(12, -33)
 
 [node name="BellySprite" type="Node2D" parent="Belly" unique_id=15910279]
 position = Vector2(-22, 26)
 
 [node name="Sprite2D" type="Sprite2D" parent="Belly/BellySprite" unique_id=459868612]
+position = Vector2(-11, 35)
 texture = ExtResource("2_wacsr")
 hframes = 2
 vframes = 2
