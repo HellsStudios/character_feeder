@@ -4,8 +4,10 @@ extends Node2D
 @onready var entire_animation_player = $EntireAnimationPlayer
 @onready var body_animation_player = $BodyAnimationPlayer
 @onready var belly_animation_player = $BellyAnimationPlayer
+@onready var cover = $"../Cover"
 
 var belly_increase : float = 0.08
+var prey_eaten_count : int = 0
 
 func _ready():
 	print("thing")
@@ -17,6 +19,7 @@ func _on_edible_eaten():
 	
 	
 func increase_belly_size():
+	prey_eaten_count += 1
 	belly_animation_player.play("belly_enlarge")
 	var current_scale : Vector2 = belly.scale
 	var increased_x = current_scale.x + 0.1
@@ -24,6 +27,9 @@ func increase_belly_size():
 	var new_scale : Vector2 = Vector2(increased_x,increased_y )
 	var tween = get_tree().create_tween()
 	tween.tween_property(belly, "scale", new_scale, 0.15)
+	if prey_eaten_count >= 3:
+		if cover:
+			cover.queue_free()
 	#belly.scale += Vector2(belly_increase, belly_increase)
 
 
