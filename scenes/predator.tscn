@@ -2,6 +2,12 @@
 
 [ext_resource type="Script" uid="uid://bbiipyu7vbxtt" path="res://scenes/predator.gd" id="1_8or0i"]
 [ext_resource type="Texture2D" uid="uid://cc64drvypvlxx" path="res://assets/pred.png" id="2_wacsr"]
+[ext_resource type="Shader" uid="uid://jy87myry1sd0" path="res://scenes/belly_outline.gdshader" id="3_koidv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_koidv"]
+shader = ExtResource("3_koidv")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_size = 2.0000000298024
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nxlau"]
 radius = 66.27216
@@ -142,6 +148,7 @@ position = Vector2(12, -33)
 position = Vector2(-22, 26)
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals/Belly/BellySprite" unique_id=459868612]
+material = SubResource("ShaderMaterial_koidv")
 position = Vector2(-11, 35)
 texture = ExtResource("2_wacsr")
 hframes = 2
