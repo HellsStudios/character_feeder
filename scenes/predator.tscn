@@ -6,7 +6,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_koidv"]
 shader = ExtResource("3_koidv")
-shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_color = Color(0.26147652, 0.26147655, 0.26147652, 1)
 shader_parameter/outline_size = 2.0000000298024
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nxlau"]
