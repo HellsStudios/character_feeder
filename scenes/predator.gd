@@ -8,6 +8,7 @@ extends Node2D
 
 var belly_increase : float = 0.08
 var prey_eaten_count : int = 0
+var gulping : bool = false
 
 func _ready():
 	print("thing")
@@ -15,7 +16,8 @@ func _ready():
 
 
 func _on_edible_eaten():
-	increase_belly_size()
+	gulping = true
+	play_gulp_animation()
 	
 	
 func increase_belly_size():
@@ -31,6 +33,10 @@ func increase_belly_size():
 		if cover:
 			cover.queue_free()
 	#belly.scale += Vector2(belly_increase, belly_increase)
+
+
+func play_gulp_animation():
+	body_animation_player.play("gulp")
 
 
 func _on_mouth_open_collision_area_entered(area):
@@ -50,5 +56,10 @@ func _on_mouth_open_collision_body_entered(body):
 
 func _on_mouth_open_collision_body_exited(body):
 	print("body exited")
-	body_animation_player.play("idle")
+	if not gulping:
+		body_animation_player.play("idle")
 	print("Current animation: ", body_animation_player.current_animation)
+
+
+func finished_gulping():
+	gulping = false

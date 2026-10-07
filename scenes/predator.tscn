@@ -49,6 +49,64 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7ds8v"]
+resource_name = "gulp"
+length = 0.9
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.9), Vector2(1, 1.1), Vector2(1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"increase_belly_size"
+}, {
+"args": [],
+"method": &"finished_gulping"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_w6bwu"]
 resource_name = "idle"
@@ -86,6 +144,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w6bwu"]
 _data = {
 &"RESET": SubResource("Animation_wacsr"),
+&"gulp": SubResource("Animation_7ds8v"),
 &"idle": SubResource("Animation_w6bwu"),
 &"mouth_open": SubResource("Animation_voa5e")
 }
@@ -129,7 +188,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nxlau"]
-size = Vector2(147, 141.5)
+size = Vector2(139, 261)
 
 [node name="Predator" type="Node2D" unique_id=493401095]
 script = ExtResource("1_8or0i")
@@ -182,7 +241,7 @@ position = Vector2(-18, -34)
 priority = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouthOpenCollision" unique_id=1255473842]
-position = Vector2(3.5, -301.25)
+position = Vector2(-0.5, -241.5)
 shape = SubResource("RectangleShape2D_nxlau")
 
 [connection signal="area_entered" from="MouthOpenCollision" to="." method="_on_mouth_open_collision_area_entered"]
