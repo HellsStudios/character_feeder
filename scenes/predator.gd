@@ -10,11 +10,6 @@ var belly_increase : float = 0.08
 var prey_eaten_count : int = 0
 var gulping : bool = false
 
-func _ready():
-	print("thing")
-	print(belly.scale)
-
-
 func _on_edible_eaten():
 	gulping = true
 	play_gulp_animation()
@@ -39,26 +34,13 @@ func play_gulp_animation():
 	body_animation_player.play("gulp")
 
 
-func _on_mouth_open_collision_area_entered(area):
-	print("area entered")
-
-
-func _on_mouth_open_collision_area_exited(area):
-	print("area exited")
-
-
-
 func _on_mouth_open_collision_body_entered(body):
-	print("body entered")
 	body_animation_player.play("mouth_open")
 
 
-
 func _on_mouth_open_collision_body_exited(body):
-	print("body exited")
 	if not gulping:
 		body_animation_player.play("idle")
-	print("Current animation: ", body_animation_player.current_animation)
 
 
 func finished_gulping():

@@ -12,11 +12,13 @@ offset_bottom = 100.0
 script = ExtResource("1_cikm8")
 edible_scene = ExtResource("2_nkltu")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=636711693]
+[node name="ButtonSprite" type="Sprite2D" parent="." unique_id=636711693]
 position = Vector2(104, 102)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_kkxgs")
 region_enabled = true
 region_rect = Rect2(0, 40, 1000, 966)
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]
