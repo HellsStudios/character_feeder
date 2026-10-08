@@ -34,11 +34,11 @@ func play_gulp_animation():
 	body_animation_player.play("gulp")
 
 
-func _on_mouth_open_collision_body_entered(body):
+func _on_mouth_open_collision_area_entered(area):
 	body_animation_player.play("mouth_open")
 
 
-func _on_mouth_open_collision_body_exited(body):
+func _on_mouth_open_collision_area_exited(area):
 	if not gulping:
 		body_animation_player.play("idle")
 

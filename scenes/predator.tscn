@@ -238,6 +238,8 @@ libraries/ = SubResource("AnimationLibrary_voa5e")
 
 [node name="MouthOpenCollision" type="Area2D" parent="." unique_id=1188597438]
 position = Vector2(-18, -34)
+collision_layer = 0
+collision_mask = 4
 priority = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouthOpenCollision" unique_id=1255473842]
@@ -246,5 +248,3 @@ shape = SubResource("RectangleShape2D_nxlau")
 
 [connection signal="area_entered" from="MouthOpenCollision" to="." method="_on_mouth_open_collision_area_entered"]
 [connection signal="area_exited" from="MouthOpenCollision" to="." method="_on_mouth_open_collision_area_exited"]
-[connection signal="body_entered" from="MouthOpenCollision" to="." method="_on_mouth_open_collision_body_entered"]
-[connection signal="body_exited" from="MouthOpenCollision" to="." method="_on_mouth_open_collision_body_exited"]
