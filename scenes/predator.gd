@@ -35,7 +35,8 @@ func play_gulp_animation():
 
 
 func _on_mouth_open_collision_area_entered(area):
-	body_animation_player.play("mouth_open")
+	if not gulping:
+		body_animation_player.play("mouth_open")
 
 
 func _on_mouth_open_collision_area_exited(area):
