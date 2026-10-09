@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bcuecjiwtkhqb" path="res://scenes/edible_spawner.gd" id="1_cikm8"]
 [ext_resource type="Texture2D" uid="uid://dorjmaxulhbwy" path="res://assets/rabbit-face-line-art-icon-vector-58758766.jpg" id="2_kkxgs"]
 [ext_resource type="PackedScene" uid="uid://bwr6mdlsu24tp" path="res://scenes/edible.tscn" id="2_nkltu"]
+[ext_resource type="AudioStream" uid="uid://b1qcullect8mt" path="res://sounds/dragon-studio-pop-402324.mp3" id="4_nkltu"]
 
 [node name="EdibleSpawner" type="Button" unique_id=2095343811]
 offset_left = -100.0
@@ -18,6 +19,11 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_kkxgs")
 region_enabled = true
 region_rect = Rect2(0, 40, 1000, 966)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1507180484]
+stream = ExtResource("4_nkltu")
+volume_db = -2.0
+bus = &"SFX"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

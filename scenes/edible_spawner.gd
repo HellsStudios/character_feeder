@@ -3,6 +3,7 @@ extends Button
 @export var edible_scene : PackedScene
 @onready var predator = $"../Predator"				
 @onready var button_sprite = $ButtonSprite
+@onready var audio_stream_player = $AudioStreamPlayer
 
 var button_scale_x_const : float
 var button_scale_y_const : float
@@ -14,6 +15,7 @@ func _ready():
 
 
 func spawn_edible():
+	audio_stream_player.play()
 	var edible_instance = edible_scene.instantiate()
 	edible_instance.global_position = Vector2(100, 100)
 	edible_instance.eaten.connect(predator._on_edible_eaten)	

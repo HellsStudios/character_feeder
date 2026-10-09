@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bbiipyu7vbxtt" path="res://scenes/predator.gd" id="1_8or0i"]
 [ext_resource type="Texture2D" uid="uid://cc64drvypvlxx" path="res://assets/pred.png" id="2_wacsr"]
 [ext_resource type="Shader" uid="uid://jy87myry1sd0" path="res://scenes/belly_outline.gdshader" id="3_koidv"]
+[ext_resource type="AudioStream" uid="uid://bsm4vtqrl7y0l" path="res://sounds/gulp11-weirddeep.wav" id="4_q77xh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_koidv"]
 shader = ExtResource("3_koidv")
@@ -245,6 +246,10 @@ priority = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouthOpenCollision" unique_id=1255473842]
 position = Vector2(-0.5, -241.5)
 shape = SubResource("RectangleShape2D_nxlau")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=101536423]
+stream = ExtResource("4_q77xh")
+bus = &"SFX"
 
 [connection signal="area_entered" from="MouthOpenCollision" to="." method="_on_mouth_open_collision_area_entered"]
 [connection signal="area_exited" from="MouthOpenCollision" to="." method="_on_mouth_open_collision_area_exited"]

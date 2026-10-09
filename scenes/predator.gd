@@ -4,6 +4,7 @@ extends Node2D
 @onready var entire_animation_player = $EntireAnimationPlayer
 @onready var body_animation_player = $BodyAnimationPlayer
 @onready var belly_animation_player = $BellyAnimationPlayer
+@onready var audio_stream_player = $AudioStreamPlayer
 @onready var cover = $"../Cover"
 
 var belly_increase : float = 0.08
@@ -32,7 +33,7 @@ func increase_belly_size():
 
 func play_gulp_animation():
 	body_animation_player.play("gulp")
-
+	audio_stream_player.play()
 
 func _on_mouth_open_collision_area_entered(area):
 	if not gulping:
