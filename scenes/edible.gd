@@ -2,11 +2,14 @@ extends RigidBody2D
 
 signal eaten
 
+@onready var edible_frame_controller = $EdibleFrameController
+
 var dragging := false
 var drag_offset := Vector2.ZERO
 
 func _ready():
 	freeze_mode = RigidBody2D.FREEZE_MODE_KINEMATIC
+	edible_frame_controller.choose_frame(1)
 
 
 func _input_event(viewport, event, shape_idx):
