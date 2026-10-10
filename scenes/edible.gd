@@ -10,7 +10,8 @@ var drag_offset := Vector2.ZERO
 func _ready():
 	freeze_mode = RigidBody2D.FREEZE_MODE_KINEMATIC
 	edible_frame_controller.choose_animal()
-
+	contact_monitor = true
+	max_contacts_reported = 10
 
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
@@ -37,9 +38,6 @@ func _physics_process(delta):
 	if dragging:
 		global_position = get_global_mouse_position() + drag_offset
 
-
-
-
 #func _input(event):
 	#if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		#if event.pressed:
@@ -52,3 +50,11 @@ func _on_eaten_hurtbox_area_entered(area):
 	emit_signal("eaten")
 	queue_free()
 	#pass
+
+
+func _on_body_entered(body):
+	edible_frame_controller.animal_on_ground()
+
+
+func _on_body_exited(body):
+	edible_frame_controller.animal_in_air()

@@ -30,4 +30,12 @@ func choose_frame(frame : int):
 
 func choose_animal():
 	current_animal = animals.keys().pick_random()
+	choose_frame(animals[current_animal]["falling"])
+	
+	
+func animal_on_ground():
 	choose_frame(animals[current_animal]["resting"])
+	
+	
+func animal_in_air():
+	choose_frame(animals[current_animal]["falling"])

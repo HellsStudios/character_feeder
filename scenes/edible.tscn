@@ -35,5 +35,7 @@ debug_color = Color(0.7176471, 0.42745098, 0.5882353, 0.41960785)
 [node name="EdibleFrameController" parent="." unique_id=365543765 node_paths=PackedStringArray("sprite") instance=ExtResource("3_2kcqm")]
 sprite = NodePath("../Sprite2D")
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="area_entered" from="EatenHurtbox" to="." method="_on_eaten_hurtbox_area_entered"]
 [connection signal="body_entered" from="EatenHurtbox" to="." method="_on_eaten_hurtbox_body_entered"]
