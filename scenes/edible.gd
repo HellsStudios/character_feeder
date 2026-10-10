@@ -9,7 +9,7 @@ var drag_offset := Vector2.ZERO
 
 func _ready():
 	freeze_mode = RigidBody2D.FREEZE_MODE_KINEMATIC
-	edible_frame_controller.choose_frame(1)
+	edible_frame_controller.choose_animal()
 
 
 func _input_event(viewport, event, shape_idx):
