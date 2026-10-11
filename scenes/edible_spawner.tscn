@@ -5,18 +5,36 @@
 [ext_resource type="PackedScene" uid="uid://bwr6mdlsu24tp" path="res://scenes/edible.tscn" id="2_nkltu"]
 [ext_resource type="AudioStream" uid="uid://b1qcullect8mt" path="res://sounds/dragon-studio-pop-402324.mp3" id="4_nkltu"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nkltu"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
 [node name="EdibleSpawner" type="Button" unique_id=2095343811]
+custom_minimum_size = Vector2(160, 160)
 offset_right = 8.0
 offset_bottom = 8.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_nkltu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nkltu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nkltu")
 script = ExtResource("1_cikm8")
 edible_scene = ExtResource("2_nkltu")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1271713344]
+visible = false
+custom_minimum_size = Vector2(180, 180)
+layout_mode = 0
+offset_right = 180.0
+offset_bottom = 180.0
+
 [node name="ButtonSprite" type="Sprite2D" parent="." unique_id=636711693]
-position = Vector2(75, 73)
+position = Vector2(80, 81)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_kkxgs")
 region_enabled = true
-region_rect = Rect2(0, 40, 1000, 966)
+region_rect = Rect2(0, 40, 1000, 956)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1507180484]
 stream = ExtResource("4_nkltu")

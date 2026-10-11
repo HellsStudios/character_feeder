@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dwhe0qvm2myce"]
+
+[ext_resource type="Script" uid="uid://d0nmlogsywffr" path="res://reset_button.gd" id="1_emgp1"]
+[ext_resource type="Texture2D" uid="uid://bpagweyxlpxxr" path="res://assets/images.png" id="1_qisyo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_emgp1"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fuqg"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ll5te"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="ResetButton" type="Button" unique_id=102663876]
+custom_minimum_size = Vector2(70, 70)
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_emgp1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0fuqg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ll5te")
+script = ExtResource("1_emgp1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1639906920]
+position = Vector2(35, 35)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_qisyo")

@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://kcud76o3mqa5" path="res://assets/Bliss_(Windows_XP).png" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://bwr68vk0lhb8r" path="res://scenes/predator.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://ig2gl8s20vf8" path="res://scenes/edible_spawner.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://dwhe0qvm2myce" path="res://reset_button.tscn" id="4_jyhfs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nxlau"]
 size = Vector2(1211, 20)
@@ -44,11 +45,20 @@ theme_override_constants/margin_bottom = 24
 layout_mode = 2
 
 [node name="EdibleSpawner" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=2095343811 instance=ExtResource("3_sugp2")]
-custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 mouse_filter = 1
+
+[node name="Spacer" type="Control" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=585163171]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="ResetButton" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=102663876 instance=ExtResource("4_jyhfs")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
 [node name="Cover" type="Node2D" parent="." unique_id=487373303]
 
