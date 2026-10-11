@@ -8,6 +8,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nxlau"]
 size = Vector2(1211, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7d04f"]
+size = Vector2(16, 675.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_skcvu"]
+size = Vector2(13.5, 663)
+
 [node name="Main" type="Node2D" unique_id=1080789217]
 
 [node name="BGSprite" type="Sprite2D" parent="." unique_id=468305354]
@@ -24,6 +30,14 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=57684275]
 position = Vector2(586, 598)
 shape = SubResource("RectangleShape2D_nxlau")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Ground" unique_id=1409297870]
+position = Vector2(1140, 301.25)
+shape = SubResource("RectangleShape2D_7d04f")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Ground" unique_id=1912114987]
+position = Vector2(10.25, 319.5)
+shape = SubResource("RectangleShape2D_skcvu")
 
 [node name="EdibleLayer" type="CanvasLayer" parent="." unique_id=2062295065]
 layer = 2

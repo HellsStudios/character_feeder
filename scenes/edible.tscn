@@ -92,7 +92,6 @@ input_pickable = true
 script = ExtResource("1_ycm2a")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=170405809]
-scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_fpjhs")
 hframes = 3
 vframes = 5

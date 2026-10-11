@@ -6,17 +6,17 @@ extends Node
 
 var animals = {
 	"rabbit": {
-		"resting": 3,
+		"resting": 0,
 		"falling": 12,
 		"running": "rabbit_run"
 	},
 	"raccoon": {
-		"resting": 7,
+		"resting": 1,
 		"falling": 13,
 		"running": "raccoon_run"
 	},
 	"beaver": {
-		"resting": 10,
+		"resting": 2,
 		"falling": 14,
 		"running": "beaver_run"
 	}

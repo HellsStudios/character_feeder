@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pk3555qmotqo"
-path="res://.godot/imported/jammet_belly.png-76d34385b7f5ef44eee2466d1d91f793.ctex"
+uid="uid://bjgpsn1nib0gf"
+path="res://.godot/imported/logo_OFFICIAL.png-b491ed333d2d4a5c86afd67ad4550de4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/jammet_belly.png"
-dest_files=["res://.godot/imported/jammet_belly.png-76d34385b7f5ef44eee2466d1d91f793.ctex"]
+source_file="res://assets/logo_OFFICIAL.png"
+dest_files=["res://.godot/imported/logo_OFFICIAL.png-b491ed333d2d4a5c86afd67ad4550de4.ctex"]
 
 [params]
 

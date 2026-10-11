@@ -13,7 +13,8 @@ config_version=5
 config/name="Character Feeder"
 run/main_scene="uid://bdm1bwo0j4bnf"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-boot_splash/bg_color=Color(0.3786461, 0.3686343, 0.59568536, 1)
+boot_splash/bg_color=Color(1, 0.8784314, 0.09803922, 1)
+boot_splash/image="uid://bjgpsn1nib0gf"
 config/icon="res://icon.svg"
 
 [display]
