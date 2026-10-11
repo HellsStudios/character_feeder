@@ -191,7 +191,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nxlau"]
 size = Vector2(139, 261)
 
-[node name="Predator" type="Node2D" unique_id=493401095]
+[node name="Predator" type="Node2D" unique_id=493401095 groups=["predator"]]
 script = ExtResource("1_8or0i")
 
 [node name="Visuals" type="Node2D" parent="." unique_id=595362937]

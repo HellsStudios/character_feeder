@@ -1,7 +1,7 @@
 extends Button
 
 @export var edible_scene : PackedScene
-@onready var predator = $"../Predator"				
+@onready var predator = get_tree().get_first_node_in_group("predator")				
 @onready var button_sprite = $ButtonSprite
 @onready var audio_stream_player = $AudioStreamPlayer
 @onready var spawn_marker_2d = $SpawnMarker2D
