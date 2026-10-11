@@ -26,21 +26,24 @@ shape = SubResource("RectangleShape2D_nxlau")
 
 [node name="Control" type="Control" parent="." unique_id=1966539738]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Control" unique_id=31499115]
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/CanvasLayer" unique_id=1563250635]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 8.0
+offset_bottom = 8.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/CanvasLayer/MarginContainer" unique_id=1018809667]
 layout_mode = 2
 
 [node name="EdibleSpawner" parent="Control/CanvasLayer/MarginContainer/HBoxContainer" unique_id=2095343811 instance=ExtResource("3_sugp2")]
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 mouse_filter = 1
 
