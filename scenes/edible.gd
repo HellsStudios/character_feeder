@@ -53,7 +53,8 @@ func _on_eaten_hurtbox_area_entered(area):
 
 
 func _on_body_entered(body):
-	edible_frame_controller.animal_on_ground()
+	#edible_frame_controller.animal_on_ground()
+	edible_frame_controller.animal_running()
 
 
 func _on_body_exited(body):
