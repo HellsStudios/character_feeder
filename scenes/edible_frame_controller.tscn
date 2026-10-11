@@ -4,3 +4,8 @@
 
 [node name="EdibleFrameController" type="Node" unique_id=365543765]
 script = ExtResource("1_kwjoo")
+
+[node name="RunningTimer" type="Timer" parent="." unique_id=272653855]
+wait_time = 0.75
+
+[connection signal="timeout" from="RunningTimer" to="." method="_on_running_timer_timeout"]
