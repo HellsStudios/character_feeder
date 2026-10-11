@@ -33,8 +33,11 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_7d04f")
 debug_color = Color(0.7176471, 0.42745098, 0.5882353, 0.41960785)
 
-[node name="EdibleFrameController" parent="." unique_id=365543765 node_paths=PackedStringArray("sprite") instance=ExtResource("3_2kcqm")]
+[node name="EdibleFrameController" parent="." unique_id=365543765 node_paths=PackedStringArray("sprite", "animation_player") instance=ExtResource("3_2kcqm")]
 sprite = NodePath("../Sprite2D")
+animation_player = NodePath("../AnimalAnimationPlayer")
+
+[node name="AnimalAnimationPlayer" type="AnimationPlayer" parent="." unique_id=550386280]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

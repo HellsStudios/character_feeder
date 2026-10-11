@@ -2,6 +2,7 @@
 extends Node
 
 @export var sprite : Sprite2D
+@export var animation_player : AnimationPlayer
 
 var animals = {
 	"rabbit": {

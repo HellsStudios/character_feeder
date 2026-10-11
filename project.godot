@@ -40,4 +40,4 @@ floor=""
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.98421234, 0.43089205, 0.5958598, 1)
+environment/defaults/default_clear_color=Color(0.4382773, 0.43827733, 0.43827724, 1)
