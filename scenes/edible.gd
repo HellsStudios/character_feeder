@@ -1,101 +1,182 @@
+
 extends RigidBody2D
 
 signal eaten
 
 @onready var edible_frame_controller = $EdibleFrameController
+@onready var running_timer: Timer = $EdibleFrameController/RunningTimer
+@onready var state_label = $StateLabel
 
 enum State {
 	RESTING,
+	RUNNING,
 	FALLING,
 	DRAGGING,
 	EATEN
 }
 
-var current_state : State = State.FALLING
-var dragging := false
+var current_state: State = State.FALLING
 var drag_offset := Vector2.ZERO
-const RUN_VELOCITY : float = 2.5
+var on_ground: bool = false
+
+const RUN_VELOCITY: float = 150.0
+const RUN_INTERVAL: float = 0.75
+
 
 func _ready():
 	freeze_mode = RigidBody2D.FREEZE_MODE_KINEMATIC
-	edible_frame_controller.choose_animal()
+
 	contact_monitor = true
 	max_contacts_reported = 10
 
-func _input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				dragging = true
-				freeze = true
+	#running_timer.wait_time = RUN_INTERVAL
+	#running_timer.one_shot = false
+	running_timer.timeout.connect(_on_running_timer_timeout)
+	running_timer.stop()
 
-				# Keeps the exact point you clicked under the mouse.
-				drag_offset = global_position - get_global_mouse_position()
-
-				get_viewport().set_input_as_handled()
+	enter_state(current_state)
 
 
-func _input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
-			if dragging:
-				dragging = false
-				freeze = false
+# ----------------------------
+# STATE MACHINE
+# ----------------------------
 
+func change_state(new_state: State):
+	if current_state == new_state:
+		return
 
-func _physics_process(delta):
-	if dragging:
-		global_position = get_global_mouse_position() + drag_offset
-	elif edible_frame_controller.running:
-		position.x += RUN_VELOCITY
-	elif not edible_frame_controller.running:
-		position.x += 0
-#func _input(event):
-	#if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		#if event.pressed:
-			#print("Mouse just went down!")
-		#elif event.is_released():
-			#print("Mouse just went up!")
-#
+	if current_state == State.EATEN:
+		return
+
+	exit_state(current_state)
+
+	current_state = new_state
+	enter_state(current_state)
+
+	# The timer runs ONLY in ground states.
+	if current_state == State.RESTING or current_state == State.RUNNING:
+		if running_timer.is_stopped():
+			running_timer.start()
+	else:
+		running_timer.stop()
 
 
 func enter_state(state: State):
+	state_label.text = str(state)
 	match state:
 		State.RESTING:
-			print("Started resting")
+			linear_velocity.x = 0.0
+			edible_frame_controller.animal_on_ground()
+
+		State.RUNNING:
+			edible_frame_controller.animal_running()
 
 		State.FALLING:
 			freeze = false
+			linear_velocity.x = 0.0
+			edible_frame_controller.animal_in_air()
 
 		State.DRAGGING:
 			freeze = true
+			linear_velocity = Vector2.ZERO
+			edible_frame_controller.animal_dragging()
 
 		State.EATEN:
+			running_timer.stop()
 			eaten.emit()
 			queue_free()
 
 
 func exit_state(state: State):
 	match state:
-		State.DRAGGING:
-			print("Stopped dragging")
+		State.RUNNING:
+			linear_velocity.x = 0.0
 
+		State.DRAGGING:
+			freeze = false
+
+
+# ----------------------------
+# INPUT
+# ----------------------------
+
+func _input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+
+			if current_state == State.EATEN:
+				return
+
+			drag_offset = global_position - get_global_mouse_position()
+
+			change_state(State.DRAGGING)
+
+			get_viewport().set_input_as_handled()
+
+
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
+
+			if current_state == State.DRAGGING:
+				change_state(State.FALLING)
+
+
+# ----------------------------
+# PHYSICS
+# ----------------------------
+
+func _physics_process(delta):
+	match current_state:
+		State.RESTING:
+			if not is_on_ground():
+				change_state(State.FALLING)
+
+		State.RUNNING:
+			if not is_on_ground():
+				change_state(State.FALLING)
+			else:
+				linear_velocity.x = RUN_VELOCITY
+
+		State.FALLING:
+			if is_on_ground():
+				change_state(State.RESTING)
+
+		State.DRAGGING:
+			global_position = get_global_mouse_position() + drag_offset
+
+		State.EATEN:
+			pass
+
+
+# Checks whether a contact is supporting the Edible.
+func is_on_ground() -> bool:
+	return on_ground
+
+
+# ----------------------------
+# TIMERS
+# ----------------------------
+
+func _on_running_timer_timeout():
+	if current_state != State.RESTING and current_state != State.RUNNING:
+		return
+
+	if randf() <= 0.5:
+		change_state(State.RUNNING)
+	else:
+		change_state(State.RESTING)
+
+func _integrate_forces(state: PhysicsDirectBodyState2D):
+	on_ground = false
+	for i in range(state.get_contact_count()):
+		var normal = state.get_contact_local_normal(i)
+		if normal.dot(Vector2.UP) > 0.7:
+			on_ground = true
+			break
+# ----------------------------
+# EATING
+# ----------------------------
 
 func _on_eaten_hurtbox_area_entered(area):
-	emit_signal("eaten")
-	queue_free()
-	#pass
-
-
-func _on_body_entered(body):
-	edible_frame_controller.animal_on_ground()
-	#edible_frame_controller.animal_running()
-
-
-func _on_body_exited(body):
-	edible_frame_controller.animal_in_air()
-	edible_frame_controller.running_timer.stop()
-
-
-func _on_animal_start_to_run_timer_timeout():
-	edible_frame_controller.running_timer.start()
+	change_state(State.EATEN)

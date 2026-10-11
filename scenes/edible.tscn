@@ -120,6 +120,13 @@ libraries/ = SubResource("AnimationLibrary_1yvyh")
 one_shot = true
 autostart = true
 
+[node name="StateLabel" type="Label" parent="." unique_id=2143063171]
+offset_left = 34.0
+offset_top = -71.0
+offset_right = 74.0
+offset_bottom = -48.0
+text = "test"
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="area_entered" from="EatenHurtbox" to="." method="_on_eaten_hurtbox_area_entered"]
