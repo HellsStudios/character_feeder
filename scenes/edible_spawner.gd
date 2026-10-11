@@ -31,7 +31,7 @@ func _on_pressed():
 
 func get_spawn_position():
 	var base_x = spawn_marker_2d.global_position.x
-	var difference = 100.0
+	var difference : float= 75.0
 	var rng = RandomNumberGenerator.new()
 	var random_x = rng.randf_range(base_x - difference, base_x + difference)
 	
