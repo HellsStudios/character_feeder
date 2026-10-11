@@ -4,6 +4,7 @@ extends Button
 @onready var predator = $"../Predator"				
 @onready var button_sprite = $ButtonSprite
 @onready var audio_stream_player = $AudioStreamPlayer
+@onready var spawn_marker_2d = $SpawnMarker2D
 
 var button_scale_x_const : float
 var button_scale_y_const : float
@@ -17,7 +18,8 @@ func _ready():
 func spawn_edible():
 	audio_stream_player.play()
 	var edible_instance = edible_scene.instantiate()
-	edible_instance.global_position = Vector2(100, 100)
+	#edible_instance.global_position = spawn_marker_2d.global_position
+	edible_instance.global_position = get_spawn_position()
 	edible_instance.eaten.connect(predator._on_edible_eaten)	
 	var main = get_tree().current_scene
 	main.add_child(edible_instance)
@@ -25,6 +27,15 @@ func spawn_edible():
 
 func _on_pressed():
 	spawn_edible()
+
+
+func get_spawn_position():
+	var base_x = spawn_marker_2d.global_position.x
+	var difference = 100.0
+	var rng = RandomNumberGenerator.new()
+	var random_x = rng.randf_range(base_x - difference, base_x + difference)
+	
+	return Vector2(random_x, spawn_marker_2d.global_position.y)
 
 
 func _on_mouse_entered():

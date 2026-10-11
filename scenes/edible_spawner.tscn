@@ -25,6 +25,9 @@ stream = ExtResource("4_nkltu")
 volume_db = -2.0
 bus = &"SFX"
 
+[node name="SpawnMarker2D" type="Marker2D" parent="." unique_id=2013335429]
+position = Vector2(100, 100)
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]
