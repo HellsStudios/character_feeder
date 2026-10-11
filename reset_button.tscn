@@ -11,14 +11,14 @@ corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fuqg"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.9832888, 0.5944477, 0.57706726, 1)
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ll5te"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.89492244, 0.89492244, 0.8949224, 1)
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
