@@ -4,6 +4,14 @@ signal eaten
 
 @onready var edible_frame_controller = $EdibleFrameController
 
+enum State {
+	RESTING,
+	FALLING,
+	DRAGGING,
+	EATEN
+}
+
+var current_state : State = State.FALLING
 var dragging := false
 var drag_offset := Vector2.ZERO
 const RUN_VELOCITY : float = 2.5
@@ -49,6 +57,29 @@ func _physics_process(delta):
 		#elif event.is_released():
 			#print("Mouse just went up!")
 #
+
+
+func enter_state(state: State):
+	match state:
+		State.RESTING:
+			print("Started resting")
+
+		State.FALLING:
+			freeze = false
+
+		State.DRAGGING:
+			freeze = true
+
+		State.EATEN:
+			eaten.emit()
+			queue_free()
+
+
+func exit_state(state: State):
+	match state:
+		State.DRAGGING:
+			print("Stopped dragging")
+
 
 func _on_eaten_hurtbox_area_entered(area):
 	emit_signal("eaten")
