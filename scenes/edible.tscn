@@ -117,6 +117,7 @@ animation_player = NodePath("../AnimalAnimationPlayer")
 libraries/ = SubResource("AnimationLibrary_1yvyh")
 
 [node name="StateLabel" type="Label" parent="." unique_id=2143063171]
+visible = false
 offset_left = 34.0
 offset_top = -71.0
 offset_right = 74.0

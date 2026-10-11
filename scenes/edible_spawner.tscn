@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://bcuecjiwtkhqb" path="res://scenes/edible_spawner.gd" id="1_cikm8"]
 [ext_resource type="Texture2D" uid="uid://dorjmaxulhbwy" path="res://assets/rabbit-face-line-art-icon-vector-58758766.jpg" id="2_kkxgs"]
 [ext_resource type="PackedScene" uid="uid://bwr6mdlsu24tp" path="res://scenes/edible.tscn" id="2_nkltu"]
-[ext_resource type="AudioStream" uid="uid://b1qcullect8mt" path="res://sounds/dragon-studio-pop-402324.mp3" id="4_nkltu"]
+[ext_resource type="AudioStream" uid="uid://cutxugv8krikk" path="res://sounds/pop.mp3" id="4_nkltu"]
+[ext_resource type="Script" uid="uid://c8t27iux4fv4u" path="res://scenes/audio_stream_player.gd" id="5_bckns"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nkltu"]
 bg_color = Color(1, 1, 1, 1)
@@ -13,7 +14,7 @@ corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a130r"]
-bg_color = Color(0.9157694, 0.9157694, 0.91576916, 1)
+bg_color = Color(0.94369775, 0.9436977, 0.94369763, 1)
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
@@ -45,8 +46,9 @@ region_rect = Rect2(0, 40, 1000, 956)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1507180484]
 stream = ExtResource("4_nkltu")
-volume_db = -2.0
+volume_db = -5.0
 bus = &"SFX"
+script = ExtResource("5_bckns")
 
 [node name="SpawnMarker2D" type="Marker2D" parent="." unique_id=2013335429]
 position = Vector2(100, 100)

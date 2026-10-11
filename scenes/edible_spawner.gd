@@ -16,7 +16,7 @@ func _ready():
 
 
 func spawn_edible():
-	audio_stream_player.play()
+	audio_stream_player.play_randomized_pitch()
 	var edible_instance = edible_scene.instantiate()
 	#edible_instance.global_position = spawn_marker_2d.global_position
 	edible_instance.global_position = get_spawn_position()
