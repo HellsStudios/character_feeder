@@ -24,6 +24,9 @@ collision_mask = 0
 position = Vector2(586, 598)
 shape = SubResource("RectangleShape2D_nxlau")
 
+[node name="EdibleLayer" type="CanvasLayer" parent="." unique_id=2062295065]
+layer = 2
+
 [node name="Control" type="Control" parent="." unique_id=1966539738]
 layout_mode = 3
 anchors_preset = 15

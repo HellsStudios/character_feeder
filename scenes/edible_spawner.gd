@@ -22,7 +22,8 @@ func spawn_edible():
 	edible_instance.global_position = get_spawn_position()
 	edible_instance.eaten.connect(predator._on_edible_eaten)	
 	var main = get_tree().current_scene
-	main.add_child(edible_instance)
+	var edible_layer = get_tree().current_scene.get_node("EdibleLayer")
+	edible_layer.add_child(edible_instance)
 
 
 func _on_pressed():
