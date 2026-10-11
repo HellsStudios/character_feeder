@@ -116,10 +116,6 @@ animation_player = NodePath("../AnimalAnimationPlayer")
 [node name="AnimalAnimationPlayer" type="AnimationPlayer" parent="." unique_id=550386280]
 libraries/ = SubResource("AnimationLibrary_1yvyh")
 
-[node name="AnimalStartToRunTimer" type="Timer" parent="." unique_id=2087821961]
-one_shot = true
-autostart = true
-
 [node name="StateLabel" type="Label" parent="." unique_id=2143063171]
 offset_left = 34.0
 offset_top = -71.0
@@ -131,4 +127,3 @@ text = "test"
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="area_entered" from="EatenHurtbox" to="." method="_on_eaten_hurtbox_area_entered"]
 [connection signal="body_entered" from="EatenHurtbox" to="." method="_on_eaten_hurtbox_body_entered"]
-[connection signal="timeout" from="AnimalStartToRunTimer" to="." method="_on_animal_start_to_run_timer_timeout"]

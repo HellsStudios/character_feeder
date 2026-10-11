@@ -18,10 +18,9 @@ enum State {
 var current_state: State = State.FALLING
 var drag_offset := Vector2.ZERO
 var on_ground: bool = false
+var run_direction: int = 1
 
 const RUN_VELOCITY: float = 150.0
-const RUN_INTERVAL: float = 0.75
-
 
 func _ready():
 	freeze_mode = RigidBody2D.FREEZE_MODE_KINEMATIC
@@ -29,8 +28,6 @@ func _ready():
 	contact_monitor = true
 	max_contacts_reported = 10
 
-	#running_timer.wait_time = RUN_INTERVAL
-	#running_timer.one_shot = false
 	running_timer.timeout.connect(_on_running_timer_timeout)
 	running_timer.stop()
 
@@ -69,6 +66,8 @@ func enter_state(state: State):
 			edible_frame_controller.animal_on_ground()
 
 		State.RUNNING:
+			run_direction = [-1, 1].pick_random()
+			edible_frame_controller.set_facing_direction(run_direction)
 			edible_frame_controller.animal_running()
 
 		State.FALLING:
@@ -136,7 +135,7 @@ func _physics_process(delta):
 			if not is_on_ground():
 				change_state(State.FALLING)
 			else:
-				linear_velocity.x = RUN_VELOCITY
+				linear_velocity.x = RUN_VELOCITY * run_direction
 
 		State.FALLING:
 			if is_on_ground():

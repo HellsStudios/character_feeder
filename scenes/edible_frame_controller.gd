@@ -60,3 +60,7 @@ func animal_running():
 func animal_dragging():
 	animation_player.stop()
 	choose_frame(animals[current_animal]["falling"])
+	
+	
+func set_facing_direction(direction: int):
+	sprite.flip_h = direction < 0
